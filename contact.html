@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | HealthHarbor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar stats-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/HealthHarbor_logo.png" alt="HealthHarbor Logo">
+                <span>Health Harbor</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointment.html">Book Appointment</a></li>
+                <li><a href="stats.html">Health Stats</a></li>
+                <li class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <div id="searchResults"></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <h2 class="page-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><strong>Address:</strong> Rangirkhari, Silchar, 45678</p>
+                    <p><strong>Phone:</strong> 7893492823</p>
+                    <p><strong>Email:</strong> contact@healthharbor.com</p>
+                    <p><strong>Hours:</strong> Mon - Fri, 9:00 AM - 5:00 PM</p>
+                </div>
+                <div class="contact-form form-container">
+                     <form>
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <button type="submit" class="btn btn-success">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

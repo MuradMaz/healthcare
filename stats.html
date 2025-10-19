@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Stats | HealthHarbor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar stats-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/HealthHarbor_logo.png" alt="HealthHarbor Logo">
+                <span>Health Harbor</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointment.html">Book Appointment</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <div id="searchResults"></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <h2 class="page-title">Health Statistics</h2>
+            <div class="stats-grid">
+                
+                <div class="stat-card">
+                    <h3 class="card-title">Vaccination Coverage</h3>
+                    <p>Percentage of population vaccinated this year.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 85%; background-color: #198754;">85%</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <h3 class="card-title">Child Health Checkups</h3>
+                    <p>Children under 5 receiving regular checkups.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 72%; background-color: #0dcaf0;">72%</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <h3 class="card-title">Diabetes Awareness</h3>
+                    <p>Adults screened for diabetes in the last 12 months.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 60%; background-color: #ffc107; color: #333;">60%</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
