@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     popup.textContent = message;
     document.body.appendChild(popup);
 
-    // Trigger animation
+  
     setTimeout(() => popup.classList.add("show"), 100);
 
-    // Remove after 3 seconds
+    
     setTimeout(() => {
       popup.classList.remove("show");
       setTimeout(() => popup.remove(), 500);
@@ -68,4 +68,5 @@ searchInput.addEventListener('input', (e) => {
       contactForm.reset();
     });
   }
+
 });
