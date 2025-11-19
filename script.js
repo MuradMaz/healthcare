@@ -1,72 +1,118 @@
-document.addEventListener("DOMContentLoaded", function () {
-  function showPopup(message) {
-    const popup = document.createElement("div");
-    popup.className = "custom-popup";
-    popup.textContent = message;
-    document.body.appendChild(popup);
+var menuBtn = document.getElementById("menu-btn");
+var navbar = document.querySelector(".navbar");
+var header = document.querySelector(".header");
+var menuOpen = false;
 
-  
-    setTimeout(() => popup.classList.add("show"), 100);
-
-    
-    setTimeout(() => {
-      popup.classList.remove("show");
-      setTimeout(() => popup.remove(), 500);
-    }, 3000);
-  }
-
-  const appointmentForm = document.querySelector("#appointmentForm");
-  if (appointmentForm) {
-    appointmentForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      showPopup("✅ Your appointment has been successfully booked!");
-      appointmentForm.reset();
-    });
-  }
-const pages = [
-  { url: 'index.html', title: 'Home', keywords: ['home', 'welcome', 'healthcare'] },
-  { url: 'doctors.html', title: 'Our Doctors', keywords: ['doctors', 'staff', 'team', 'physicians'] },
-  { url: 'appointment.html', title: 'Book Appointment', keywords: ['appointment', 'schedule', 'booking'] },
-  { url: 'locations.html', title: 'Our Locations', keywords: ['locations', 'clinics', 'hospitals'] },
-  { url: 'stats.html', title: 'Statistics', keywords: ['stats', 'data', 'statistics'] },
-  { url: 'contact.html', title: 'Contact Us', keywords: ['contact', 'help', 'support'] }
-];
-
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-
-searchInput.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-  searchResults.innerHTML = ''; 
-
-  if (searchTerm.length > 0) {
-    const filteredPages = pages.filter(page =>
-      page.title.toLowerCase().includes(searchTerm) ||
-      page.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm))
-    );
-
-    if (filteredPages.length > 0) {
-      filteredPages.forEach(page => {
-        const resultElement = document.createElement('a');
-        resultElement.href = page.url;
-        resultElement.textContent = page.title;
-        searchResults.appendChild(resultElement);
-      });
+function toggleMenu() {
+    if (menuOpen == false) {
+        navbar.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
+        menuBtn.classList.remove("fa-bars");
+        menuBtn.classList.add("fa-times");
+        menuOpen = true;
     } else {
-      const noResult = document.createElement('p');
-      noResult.textContent = 'No results found.';
-      searchResults.appendChild(noResult);
+        navbar.style.clipPath = "polygon(0 0, 100% 0, 100% 0, 0 0)";
+        menuBtn.classList.remove("fa-times");
+        menuBtn.classList.add("fa-bars");
+        menuOpen = false;
     }
-  }
-});
+}
 
-  const contactForm = document.querySelector("#contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      showPopup("📬 Your message has been sent! We'll get back to you soon.");
-      contactForm.reset();
-    });
-  }
+menuBtn.onclick = function() {
+    toggleMenu();
+};
 
-});
+window.onscroll = function() {
+    
+    if (menuOpen == true) {
+        navbar.style.clipPath = "polygon(0 0, 100% 0, 100% 0, 0 0)";
+        menuBtn.classList.remove("fa-times");
+        menuBtn.classList.add("fa-bars");
+        menuOpen = false;
+    }
+
+    var top = window.scrollY;
+    if (top > 0) {
+        header.style.backgroundColor = "#fff";
+        header.style.boxShadow = "0 .5rem 1rem rgba(0,0,0,.1)";
+    } else {
+        header.style.backgroundColor = "transparent";
+        header.style.boxShadow = "none";
+    }
+
+    var sections = document.querySelectorAll('section');
+    var navLinks = document.querySelectorAll('.navbar a');
+
+    for (var i = 0; i < sections.length; i++) {
+        var sec = sections[i];
+        var height = sec.offsetHeight;
+        var offset = sec.offsetTop - 150;
+        var id = sec.getAttribute('id');
+        var currentScroll = window.scrollY;
+
+        if (currentScroll >= offset && currentScroll < offset + height) {
+            for (var j = 0; j < navLinks.length; j++) {
+                navLinks[j].classList.remove('active');
+            }
+            var targetLink = document.querySelector('.navbar a[href*=' + id + ']');
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+        }
+    }
+};
+
+function startCounters() {
+    var num1 = document.getElementsByClassName("num")[0];
+    var num2 = document.getElementsByClassName("num")[1];
+    var num3 = document.getElementsByClassName("num")[2];
+
+    var start1 = 0;
+    var end1 = 140; 
+    var timer1 = setInterval(function() {
+        start1 = start1 + 1;
+        if(num1) num1.innerHTML = start1 + "+";
+        if (start1 == end1) {
+            clearInterval(timer1);
+        }
+    }, 20);
+
+    var start2 = 0;
+    var end2 = 1040; 
+    var timer2 = setInterval(function() {
+        start2 = start2 + 10;
+        if(num2) num2.innerHTML = start2 + "+";
+        if (start2 >= end2) {
+            clearInterval(timer2);
+            if(num2) num2.innerHTML = "1040+"; 
+        }
+    }, 20);
+
+    var start3 = 0;
+    var end3 = 500; 
+    var timer3 = setInterval(function() {
+        start3 = start3 + 5;
+        if(num3) num3.innerHTML = start3 + "+";
+        if (start3 >= end3) {
+            clearInterval(timer3);
+        }
+    }, 30);
+}
+
+window.onload = function() {
+    startCounters();
+};
+
+var submitBtn = document.querySelector('.btn');
+if(submitBtn) {
+    submitBtn.onclick = function(e) {
+        var email = document.querySelector('input[type="email"]').value;
+        var number = document.querySelector('input[type="number"]').value;
+
+        if (email == "" || number == "") {
+            alert("Please fill in all the fields properly!");
+            return false;
+        } else {
+            alert("Thanks! We will call you.");
+        }
+    };
+}
